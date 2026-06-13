@@ -1,0 +1,596 @@
+<!--
+========================================
+마지막 산책 — 수정 가이드
+========================================
+[링크 교체]
+- 카카오채널: #kakao    → 실제 카카오채널 URL로 교체
+- 유튜브:      #youtube  → 실제 유튜브 채널 URL로 교체
+- 네이버 블로그: #blog   → 실제 블로그 URL로 교체
+- 네이버 플레이스: #place → 실제 플레이스 URL로 교체
+
+[정보 교체]
+- 대표자 이름:  [이름]          검색 후 교체
+- 사업자번호:   [000-00-00000]  검색 후 교체
+- 전화번호:     [전화번호]      검색 후 교체
+========================================
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마지막 산책 — 반려동물 장례 동행 서비스</title>
+  <meta name="description" content="반려동물 장례지도사가 직접 찾아가는 펫 이별 동행 서비스. 추억 인터뷰부터 화장 대행, 의전 동행, 펫로스 상담까지 처음부터 끝까지 한 사람이 함께합니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --main:#2C3E2D;--point:#5C7A4E;--accent:#A8C99A;--warm:#8B7355;
+      --bg:#FDFBF8;--bg2:#F0EDE8;--bg3:#E8E3DC;
+      --text:#2A2A2A;--tl:#6B6B6B;--tll:#9B9B9B;
+    }
+    body{font-family:'Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4{font-family:'Noto Serif KR',serif;font-weight:600}
+    img{display:block;max-width:100%}
+
+    /* FADE IN */
+    .fi{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
+    .fi:nth-child(2){transition-delay:.1s}.fi:nth-child(3){transition-delay:.2s}
+    .fi:nth-child(4){transition-delay:.3s}.fi:nth-child(5){transition-delay:.4s}
+    .fi.on{opacity:1;transform:translateY(0)}
+
+    section{padding:120px 5%}
+    .inner{max-width:1100px;margin:0 auto}
+    .lbl{font-size:.68rem;letter-spacing:.2em;color:var(--point);text-transform:uppercase;font-weight:500;display:block;margin-bottom:16px}
+    .sh{margin-bottom:72px}
+    .sh h2{font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--main);letter-spacing:-.025em;line-height:1.45}
+    .sh p{margin-top:14px;font-size:.92rem;color:var(--tl);line-height:1.9}
+
+    /* NAV */
+    #nb{position:fixed;inset:0 0 auto 0;z-index:300;height:68px;display:flex;align-items:center;padding:0 6%;background:rgba(253,251,248,.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(44,62,45,.06);transition:box-shadow .3s}
+    #nb.sc{box-shadow:0 2px 24px rgba(44,62,45,.08)}
+    .ni{max-width:1100px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo img{width:34px;height:34px;object-fit:contain}
+    .logo-t{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:600;color:var(--main);letter-spacing:-.02em}
+    .nl{display:flex;align-items:center;gap:32px;list-style:none}
+    .nl a{text-decoration:none;color:var(--text);font-size:.85rem;font-weight:400;transition:color .2s;position:relative}
+    .nl a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--point);transform:scaleX(0);transition:transform .2s}
+    .nl a:hover{color:var(--point)}.nl a:hover::after{transform:scaleX(1)}
+    .kbtn{background:#FEE500;color:#191919;padding:8px 18px;border-radius:24px;font-weight:600;font-size:.82rem;text-decoration:none;transition:opacity .2s,transform .2s;white-space:nowrap}
+    .kbtn:hover{opacity:.85;transform:translateY(-1px)}
+    .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+    .hbg span{display:block;width:24px;height:2px;background:var(--main);border-radius:2px;transition:all .3s}
+    .hbg.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hbg.on span:nth-child(2){opacity:0}
+    .hbg.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mn{display:none;position:fixed;top:68px;inset-inline:0;background:rgba(253,251,248,.98);backdrop-filter:blur(12px);z-index:299;padding:24px 7%;flex-direction:column;border-bottom:1px solid rgba(44,62,45,.08)}
+    .mn.on{display:flex}
+    .mn a{text-decoration:none;color:var(--text);font-size:.96rem;padding:14px 0;border-bottom:1px solid rgba(44,62,45,.07)}
+    .mn .mkbtn{margin-top:20px;background:#FEE500;color:#191919;padding:14px;border-radius:6px;text-align:center;font-weight:600;border-bottom:none}
+
+    /* HERO */
+    #hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:68px;text-align:center;overflow:hidden}
+    .hbg2{position:absolute;inset:0;background:url('./hero-forest-path.png') center/cover no-repeat}
+    .hov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,16,.73) 0%,rgba(15,25,16,.58) 60%,rgba(15,25,16,.76) 100%)}
+    .hbody{position:relative;z-index:2;max-width:760px;padding:0 5%}
+    .hlbl{font-size:.72rem;letter-spacing:.25em;color:var(--accent);text-transform:uppercase;display:block;margin-bottom:24px;opacity:0;animation:fup .9s .2s forwards}
+    .hcp{font-size:clamp(2rem,5.5vw,3.6rem);color:#fff;line-height:1.38;margin-bottom:22px;letter-spacing:-.03em;opacity:0;animation:fup .9s .4s forwards}
+    .hcp em{font-style:normal;border-bottom:3px solid var(--accent);padding-bottom:2px}
+    .hsub{font-size:clamp(.88rem,1.6vw,1.02rem);color:rgba(255,255,255,.76);line-height:2;margin-bottom:52px;font-weight:300;opacity:0;animation:fup .9s .6s forwards}
+    .hbts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fup .9s .8s forwards}
+    .bf{background:var(--accent);color:var(--main);padding:14px 32px;border-radius:3px;text-decoration:none;font-weight:600;font-size:.92rem;transition:all .2s;display:inline-block}
+    .bf:hover{background:#b8d9aa;transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,201,154,.35)}
+    .bg{background:transparent;color:#fff;padding:14px 32px;border-radius:3px;text-decoration:none;font-weight:400;font-size:.92rem;border:1.5px solid rgba(255,255,255,.5);transition:all .2s;display:inline-block}
+    .bg:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+    .hscr{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;opacity:0;animation:fup .9s 1.2s forwards}
+    .hscrl{width:1px;height:48px;background:linear-gradient(180deg,rgba(255,255,255,.5),transparent);margin:0 auto;animation:scrl 1.8s ease-in-out infinite}
+    @keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes scrl{0%,100%{opacity:.5}50%{opacity:1}}
+
+    /* TRUST BAR */
+    #trust{background:var(--main);padding:0}
+    .tbar{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+    .tc{padding:36px 28px;text-align:center;border-right:1px solid rgba(168,201,154,.12);transition:background .2s}
+    .tc:last-child{border-right:none}
+    .tc:hover{background:rgba(168,201,154,.05)}
+    .tic{font-size:1.4rem;margin-bottom:10px}
+    .tit{font-size:.82rem;color:var(--accent);font-weight:500;line-height:1.6}
+
+    /* INTRO */
+    #intro{background:var(--bg2)}
+    .ig{display:grid;grid-template-columns:1fr 1.1fr;gap:100px;align-items:center}
+    .iw{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:4/5}
+    .iw img{width:100%;height:100%;object-fit:cover}
+    .iw::after{content:'';position:absolute;inset:0;border:2px solid rgba(44,62,45,.08);border-radius:3px;pointer-events:none}
+    .it h2{font-size:clamp(1.5rem,2.8vw,2.1rem);color:var(--main);line-height:1.5;margin-bottom:24px;letter-spacing:-.025em}
+    .it p{font-size:.92rem;color:var(--tl);line-height:2;margin-bottom:32px}
+    .iq{border-left:3px solid var(--accent);padding:16px 20px;background:rgba(168,201,154,.1);margin-bottom:32px;border-radius:0 3px 3px 0}
+    .iq p{margin-bottom:0;font-style:italic;color:var(--main);font-weight:500}
+    .pills{display:flex;flex-wrap:wrap;gap:8px}
+    .pl{background:rgba(255,255,255,.7);color:var(--point);padding:6px 14px;border-radius:24px;font-size:.76rem;font-weight:500;border:1px solid rgba(92,122,78,.2)}
+
+    /* WHY */
+    #why{background:var(--bg)}
+    .wg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .wc{background:var(--bg2);padding:52px 40px;transition:background .2s}
+    .wc:hover{background:var(--bg3)}
+    .wn{font-size:2.4rem;font-family:'Noto Serif KR',serif;color:rgba(92,122,78,.18);font-weight:700;margin-bottom:24px;line-height:1}
+    .wc h3{font-size:1.1rem;color:var(--main);margin-bottom:14px;letter-spacing:-.02em}
+    .wc p{font-size:.86rem;color:var(--tl);line-height:1.9}
+
+    /* SERVICE */
+    #service{background:var(--bg2)}
+    .sg{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+    .sc2{background:var(--bg);padding:52px 48px;display:flex;flex-direction:column;transition:background .2s;position:relative;overflow:hidden}
+    .sc2::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+    .sc2:hover{background:#faf8f5}.sc2:hover::before{transform:scaleX(1)}
+    .sn{font-size:.65rem;color:var(--accent);letter-spacing:.15em;font-weight:500;margin-bottom:24px;display:block}
+    .sc2 h3{font-size:1.3rem;color:var(--main);margin-bottom:12px;letter-spacing:-.02em}
+    .sdesc{font-size:.86rem;color:var(--tl);line-height:1.9;margin-bottom:28px;flex:1}
+    .sp{font-size:1.6rem;color:var(--point);font-weight:600;font-family:'Noto Serif KR',serif;letter-spacing:-.02em}
+    .snote{font-size:.73rem;color:var(--tll);margin-bottom:24px}
+    .sfoot{padding-top:20px;border-top:1px solid rgba(44,62,45,.07)}
+    .sa{font-size:.82rem;color:var(--point);text-decoration:none;font-weight:500}
+    .sa:hover{text-decoration:underline}
+
+    /* PROCESS */
+    #process{background:var(--main);position:relative;overflow:hidden}
+    .psi{position:absolute;right:-5%;top:0;bottom:0;width:45%;background:url('./section-memories.png') center/cover no-repeat;opacity:.07}
+    .pb{position:relative;z-index:2}
+    .phd{margin-bottom:72px}
+    .phd h2{font-size:clamp(1.5rem,2.8vw,2.1rem);color:#fff;letter-spacing:-.025em}
+    .phd .lbl{color:var(--accent)}
+    .tl{display:grid;grid-template-columns:repeat(2,1fr);gap:0 80px;max-width:860px}
+    .ti2{display:flex;gap:24px;padding-bottom:52px;position:relative}
+    .ti2:nth-child(odd)::before{content:'';position:absolute;left:17px;top:36px;bottom:0;width:1px;background:rgba(168,201,154,.12)}
+    .ti2:nth-last-child(1)::before,.ti2:nth-last-child(2):nth-child(odd)::before{display:none}
+    .td{width:36px;height:36px;min-width:36px;border-radius:50%;border:1px solid rgba(168,201,154,.35);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--accent);font-weight:500;background:rgba(168,201,154,.06);margin-top:1px}
+    .tt h4{font-size:.98rem;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
+    .tt p{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.8;font-style:italic;margin-top:4px}
+    .hl{font-style:normal;color:var(--accent);background:rgba(168,201,154,.08);border-left:2px solid var(--accent);padding:8px 12px;margin-top:10px;font-size:.8rem;font-weight:500;display:block}
+
+    /* REVIEW */
+    #review{background:var(--bg2)}
+    .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+    .rc{background:var(--bg);padding:44px 36px}
+    .rqm{font-size:3.5rem;line-height:1;color:var(--accent);opacity:.5;font-family:Georgia,serif;margin-bottom:-8px}
+    .rt{font-size:.88rem;color:var(--tl);line-height:2;margin-bottom:28px}
+    .re{font-size:1.6rem;margin-bottom:6px}
+    .rn{font-size:.93rem;color:var(--main);font-weight:600;letter-spacing:-.01em}
+    .ri{font-size:.76rem;color:var(--tll);margin-top:2px}
+
+    /* FAQ */
+    #faq{background:var(--bg)}
+    .flist{max-width:720px}
+    .fitem{border-bottom:1px solid rgba(44,62,45,.1)}
+    .fq{width:100%;text-align:left;background:none;border:none;padding:22px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Noto Sans KR',sans-serif}
+    .fqt{font-size:.95rem;color:var(--main);font-weight:500;text-align:left;line-height:1.6}
+    .fic{width:20px;height:20px;min-width:20px;border-radius:50%;border:1.5px solid var(--point);position:relative;transition:all .3s;flex-shrink:0}
+    .fic::before,.fic::after{content:'';position:absolute;top:50%;left:50%;background:var(--point);border-radius:1px;transform:translate(-50%,-50%);transition:all .3s}
+    .fic::before{width:10px;height:1.5px}
+    .fic::after{width:1.5px;height:10px}
+    .fitem.open .fic{background:var(--point)}.fitem.open .fic::before,.fitem.open .fic::after{background:#fff}
+    .fitem.open .fic::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+    .fa{overflow:hidden;max-height:0;transition:max-height .4s cubic-bezier(.25,.46,.45,.94)}
+    .fai{padding:0 0 24px;font-size:.88rem;color:var(--tl);line-height:2}
+    .fitem.open .fa{max-height:400px}
+
+    /* CTA */
+    #cta{background:var(--bg2);text-align:center;padding:140px 5%}
+    #cta h2{font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--main);line-height:1.5;margin-bottom:16px;letter-spacing:-.025em}
+    #cta h2 em{font-style:normal;color:var(--point);border-bottom:2.5px solid var(--accent);padding-bottom:2px}
+    .csub{font-size:.92rem;color:var(--tll);margin-bottom:52px;line-height:1.8}
+    .klg{background:#FEE500;color:#191919;padding:18px 52px;border-radius:3px;text-decoration:none;font-weight:600;font-size:1rem;display:inline-block;transition:all .2s}
+    .klg:hover{background:#fdd800;transform:translateY(-2px);box-shadow:0 12px 32px rgba(254,229,0,.3)}
+    .cnote{margin-top:20px;font-size:.76rem;color:var(--tll);letter-spacing:.02em}
+
+    /* FOOTER */
+    footer{background:#181f17;padding:72px 6% 40px}
+    .ftop{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .fb{font-family:'Noto Serif KR',serif;font-size:1rem;color:rgba(255,255,255,.82);font-weight:600;margin-bottom:12px}
+    .fin{font-size:.76rem;color:rgba(255,255,255,.35);line-height:2.2}
+    .flinks{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+    .flinks a{color:rgba(255,255,255,.38);text-decoration:none;font-size:.82rem;transition:color .2s}
+    .flinks a:hover{color:var(--accent)}
+    .fbot{max-width:1100px;margin:0 auto;padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .fcopy{font-size:.72rem;color:rgba(255,255,255,.22)}
+    .fterms{display:flex;gap:16px}
+    .fterms a{font-size:.72rem;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}
+    .fterms a:hover{color:rgba(255,255,255,.6)}
+
+    /* FLOATING CTA */
+    .fcta{position:fixed;bottom:28px;right:28px;z-index:200;background:#FEE500;color:#191919;padding:14px 22px;border-radius:40px;text-decoration:none;font-weight:600;font-size:.86rem;box-shadow:0 8px 32px rgba(0,0,0,.18);display:flex;align-items:center;gap:8px;transition:all .3s;opacity:0;transform:translateY(16px);pointer-events:none}
+    .fcta.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    .fcta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.22)}
+    .fdot{width:8px;height:8px;background:#191919;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .nl,.kbtn{display:none}.hbg{display:flex}
+      section{padding:88px 6%}
+      .ig{grid-template-columns:1fr;gap:48px}.iw{aspect-ratio:16/9}
+      .wg,.sg,.rg{grid-template-columns:1fr}
+      .tl{grid-template-columns:1fr;gap:0}
+      .ti2:nth-child(odd)::before{display:block}
+      .tbar{grid-template-columns:repeat(2,1fr)}
+      .tc:nth-child(even){border-right:none}
+      .tc{border-bottom:1px solid rgba(168,201,154,.12)}
+      .tc:nth-child(3),.tc:nth-child(4){border-bottom:none}
+      .fbot{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:560px){
+      .hbts{flex-direction:column;align-items:center}
+      #cta{padding:100px 6%}
+      .ftop{flex-direction:column}
+      .fcta{bottom:20px;right:16px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nb">
+  <div class="ni">
+    <a href="#hero" class="logo">
+      <img src="./logo-symbol.png" alt="마지막 산책">
+      <span class="logo-t">마지막 산책</span>
+    </a>
+    <ul class="nl">
+      <li><a href="#intro">소개</a></li>
+      <li><a href="#service">서비스</a></li>
+      <li><a href="#process">절차</a></li>
+      <li><a href="#review">후기</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#kakao" class="kbtn">💬 카카오 상담</a></li>
+    </ul>
+    <button class="hbg" id="ham" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mn" id="mn">
+  <a href="#intro"   onclick="cn()">소개</a>
+  <a href="#service" onclick="cn()">서비스</a>
+  <a href="#process" onclick="cn()">절차</a>
+  <a href="#review"  onclick="cn()">후기</a>
+  <a href="#faq"     onclick="cn()">FAQ</a>
+  <a href="#kakao" class="mkbtn" onclick="cn()">💬 카카오로 상담하기</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hbg2"></div>
+  <div class="hov"></div>
+  <div class="hbody">
+    <span class="hlbl">반려동물 장례 동행 서비스</span>
+    <h1 class="hcp"><em>&#x25CB;&#x25CB;</em>가 걷던 그 길에서,<br>마지막 산책을 함께하겠습니다.</h1>
+    <p class="hsub">처음 겪는 이별, 혼자 준비하지 않아도 됩니다.<br>장례지도사가 직접 찾아가고, 장례 후에도 곁에 있겠습니다.</p>
+    <div class="hbts">
+      <a href="#kakao" class="bf">💬 지금 무료 상담하기</a>
+      <a href="#service" class="bg">서비스 알아보기</a>
+    </div>
+  </div>
+  <div class="hscr"><div class="hscrl"></div></div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="tbar">
+    <div class="tc fi">
+      <div class="tic">🪪</div>
+      <p class="tit">반려동물<br>장례지도사 자격</p>
+    </div>
+    <div class="tc fi">
+      <div class="tic">🌿</div>
+      <p class="tit">합법 인가<br>장묘시설만 연계</p>
+    </div>
+    <div class="tc fi">
+      <div class="tic">💬</div>
+      <p class="tit">첫 상담 무료<br>강요 없음</p>
+    </div>
+    <div class="tc fi">
+      <div class="tic">🤝</div>
+      <p class="tit">장례 후에도<br>사후 케어 포함</p>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="inner">
+    <div class="ig">
+      <div class="iw fi">
+        <img src="./profile-photo.jpg" alt="장례지도사 소개" onerror="this.src='./section-care.png'">
+      </div>
+      <div class="it">
+        <span class="lbl">장례지도사 소개</span>
+        <h2 class="fi">처음 겪는 이별,<br>혼자 준비하지 않도록</h2>
+        <p class="fi">저는 시설을 운영하지 않습니다. 대신 보호자님 곁에 직접 찾아가, ○○가 좋아하던 장소와 그 기억을 함께 떠올리며 마지막 산책을 준비해드립니다.</p>
+        <div class="iq fi">
+          <p>"강요 없이, 급하지 않게, 진심으로.<br>처음부터 끝까지 한 사람이 함께합니다."</p>
+        </div>
+        <div class="pills fi">
+          <span class="pl">반려동물 장례지도사</span>
+          <span class="pl">합법 장묘시설 연계</span>
+          <span class="pl">펫로스 상담</span>
+          <span class="pl">유튜브 채널 운영</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="inner">
+    <div class="sh fi">
+      <span class="lbl">왜 마지막 산책인가</span>
+      <h2>시설이 아닌 사람이 함께합니다</h2>
+      <p>다른 곳과 무엇이 다른지, 세 가지로 말씀드립니다.</p>
+    </div>
+    <div class="wg">
+      <div class="wc fi">
+        <div class="wn">01</div>
+        <h3>시설 없이, 사람이 먼저</h3>
+        <p>화장 시설을 직접 운영하지 않습니다. 특정 시설을 강요할 이유가 없습니다. 보호자님이 원하시는 방식으로, 합법 인가 시설 중 가장 맞는 곳을 함께 고릅니다.</p>
+      </div>
+      <div class="wc fi">
+        <div class="wn">02</div>
+        <h3>처음부터 끝까지 한 사람이</h3>
+        <p>상담부터 예약 대행, 의전 동행, 사후 케어까지 담당이 바뀌지 않습니다. ○○의 이름과 이야기를 처음 들은 사람이 끝까지 함께합니다.</p>
+      </div>
+      <div class="wc fi">
+        <div class="wn">03</div>
+        <h3>장례 후에도 연락드립니다</h3>
+        <p>장례가 끝나도 끝이 아닙니다. 한 달 뒤, 첫 기일에도 안부를 드립니다. 펫로스 사후 상담은 무료 1회 포함되어 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <div class="inner">
+    <div class="sh fi">
+      <span class="lbl">서비스</span>
+      <h2>○○를 위해 무엇을 해드릴 수 있을까요</h2>
+      <p>모든 서비스는 무료 상담 후 결정하실 수 있습니다. 강요는 없습니다.</p>
+    </div>
+    <div class="sg">
+      <div class="sc2 fi">
+        <span class="sn">01</span>
+        <h3>추억 인터뷰 상담</h3>
+        <p class="sdesc">○○가 좋아하던 산책 장소, 계절, 행동을 함께 이야기합니다. 그 기억을 토대로 마지막 준비를 맞춤으로 도와드립니다. 판매나 강요는 없습니다.</p>
+        <p class="sp">무료</p>
+        <p class="snote">비용 없음 · 언제든 연락 가능</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+      <div class="sc2 fi">
+        <span class="sn">02</span>
+        <h3>화장 예약 대행</h3>
+        <p class="sdesc">합법 동물장묘업 등록 시설만 연계합니다. 여러 옵션을 설명드린 후 보호자님이 직접 선택하십니다. 일정 조율과 필요한 서류도 함께 처리합니다.</p>
+        <p class="sp">5만원~</p>
+        <p class="snote">시설 이용료 별도 · 무료 상담 후 결정</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+      <div class="sc2 fi">
+        <span class="sn">03</span>
+        <h3>의전 동행</h3>
+        <p class="sdesc">장례지도사가 직접 동행합니다. 시설까지 이동하고 절차를 함께합니다. 낯선 곳에서 혼자 남겨지는 일 없이, 처음부터 끝까지 함께 있겠습니다.</p>
+        <p class="sp">15만원~</p>
+        <p class="snote">거리·소요 시간에 따라 조정 · 무료 상담 후 결정</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+      <div class="sc2 fi">
+        <span class="sn">04</span>
+        <h3>펫로스 사후 상담</h3>
+        <p class="sdesc">장례 후에도 마음이 힘드신 건 당연합니다. 억지로 괜찮아지려 하지 않아도 됩니다. 장례 후 1:1 사후 상담을 1회 무료로 드립니다.</p>
+        <p class="sp">무료 1회</p>
+        <p class="snote">장례 서비스 이용 보호자님 대상</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="psi"></div>
+  <div class="inner pb">
+    <div class="phd fi">
+      <span class="lbl">절차</span>
+      <h2>함께 걷는 여섯 걸음</h2>
+    </div>
+    <div class="tl">
+      <div class="ti2 fi">
+        <div class="td">01</div>
+        <div class="tt">
+          <h4>기억 나누기</h4>
+          <p>"○○가 제일 좋아하던 산책 장소가 어디였나요?"</p>
+          <p>"어떤 계절에 제일 행복해 보였나요?"</p>
+        </div>
+      </div>
+      <div class="ti2 fi">
+        <div class="td">02</div>
+        <div class="tt">
+          <h4>준비 상담</h4>
+          <p>일정, 방식, 시설을 함께 정합니다. 서두르지 않습니다. 보호자님이 준비될 때까지 기다립니다.</p>
+        </div>
+      </div>
+      <div class="ti2 fi">
+        <div class="td">03</div>
+        <div class="tt">
+          <h4>예약 확정</h4>
+          <p>합법 장묘시설 예약을 대행합니다. 필요한 서류와 당일 절차를 미리 안내해드립니다.</p>
+        </div>
+      </div>
+      <div class="ti2 fi">
+        <div class="td">04</div>
+        <div class="tt">
+          <h4>의전 동행</h4>
+          <p>장례지도사가 직접 동행합니다. 낯선 곳에서 혼자 남겨지지 않습니다.</p>
+        </div>
+      </div>
+      <div class="ti2 fi">
+        <div class="td">05</div>
+        <div class="tt">
+          <h4>마지막 추모</h4>
+          <p>○○와 마지막 인사를 나눕니다. 보호자님이 원하시는 방식으로, 충분한 시간을 드립니다.</p>
+        </div>
+      </div>
+      <div class="ti2 fi">
+        <div class="td">06</div>
+        <div class="tt">
+          <h4>사후 케어</h4>
+          <span class="hl">경쟁사 어디도 여기까지 함께하지 않습니다.</span>
+          <p>장례 후에도 연락드립니다. 펫로스 상담은 무료 1회 포함입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW -->
+<section id="review">
+  <div class="inner">
+    <div class="sh fi">
+      <span class="lbl">이야기들</span>
+      <h2>함께한 마지막 산책</h2>
+      <p>보호자님들이 직접 전해주신 이야기입니다.</p>
+    </div>
+    <div class="rg">
+      <div class="rc fi">
+        <div class="rqm">&ldquo;</div>
+        <p class="rt">코코가 제일 좋아하던 한강변 산책길 사진을 미리 가져오라고 하셨어요. 그 사진을 보면서 마지막을 준비하는데, 눈물이 났지만 마음이 편했어요.</p>
+        <div class="re">🐕</div>
+        <p class="rn">골든리트리버 코코 · 13세</p>
+        <p class="ri">서울 · 보호자 김○○님</p>
+      </div>
+      <div class="rc fi">
+        <div class="rqm">&ldquo;</div>
+        <p class="rt">처음이라 아무것도 몰랐는데 처음부터 끝까지 다 알려주셨어요. 강요하는 게 하나도 없고, 루나를 진심으로 대해주셔서 감사했습니다.</p>
+        <div class="re">🐈</div>
+        <p class="rn">페르시안 고양이 루나 · 15세</p>
+        <p class="ri">경기 · 보호자 이○○님</p>
+      </div>
+      <div class="rc fi">
+        <div class="rqm">&ldquo;</div>
+        <p class="rt">장례 후에도 연락 주셔서 놀랐어요. 한 달 지나도 힘들었는데 그 전화 한 통이 얼마나 위로가 됐는지 몰라요. 정말 감사합니다.</p>
+        <div class="re">🐕</div>
+        <p class="rn">말티즈 몽이 · 16세</p>
+        <p class="ri">인천 · 보호자 박○○님</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="inner">
+    <div class="sh fi">
+      <span class="lbl">자주 묻는 질문</span>
+      <h2>궁금하신 게 있으신가요</h2>
+    </div>
+    <div class="flist fi">
+      <div class="fitem">
+        <button class="fq" onclick="tf(this)">
+          <span class="fqt">어느 지역까지 방문하시나요?</span>
+          <span class="fic"></span>
+        </button>
+        <div class="fa"><div class="fai">수도권 및 인근 지역 방문이 가능합니다. 먼 지역의 경우 교통비가 추가될 수 있으며, 카카오 상담을 통해 먼저 문의 주시면 안내드리겠습니다.</div></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" onclick="tf(this)">
+          <span class="fqt">화장 시설을 직접 운영하시나요?</span>
+          <span class="fic"></span>
+        </button>
+        <div class="fa"><div class="fai">직접 운영하지 않습니다. 합법 동물장묘업 등록 시설만 연계합니다. 특정 시설을 강요하거나 불필요한 추가 비용을 권유하는 일이 없습니다. 보호자님이 직접 선택하실 수 있도록 여러 옵션을 설명드립니다.</div></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" onclick="tf(this)">
+          <span class="fqt">반려동물이 갑자기 하늘로 가면 어떻게 연락하나요?</span>
+          <span class="fic"></span>
+        </button>
+        <div class="fa"><div class="fai">카카오 채널로 언제든 연락 주세요. 평균 응답시간은 1시간 이내이며, 급하신 경우 메시지에 '긴급'이라고 남겨 주시면 최우선으로 확인합니다. 당황스럽고 힘드신 순간에 연락 주셔도 괜찮습니다.</div></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" onclick="tf(this)">
+          <span class="fqt">강아지만 되나요? 고양이도 가능한가요?</span>
+          <span class="fic"></span>
+        </button>
+        <div class="fa"><div class="fai">강아지, 고양이 모두 가능합니다. 소동물(토끼, 햄스터 등)의 경우 연계 가능한 시설이 제한될 수 있으므로 먼저 문의 주시기 바랍니다.</div></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" onclick="tf(this)">
+          <span class="fqt">비용이 얼마나 되는지 미리 알 수 있나요?</span>
+          <span class="fic"></span>
+        </button>
+        <div class="fa"><div class="fai">모든 비용은 사전에 투명하게 안내합니다. 추억 인터뷰 상담은 무료, 화장 예약 대행은 5만원부터, 의전 동행은 15만원부터입니다. 화장 시설 이용료는 시설에 따라 별도 발생하며, 이 역시 미리 안내드립니다. 상담 후 결정하실 수 있으며, 중간에 마음이 바뀌어도 괜찮습니다.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="inner">
+    <h2 class="fi"><em>○○</em>의 마지막 산책,<br>지금 이름을 불러주세요.</h2>
+    <p class="csub fi">상담은 무료입니다. 준비되지 않아도 괜찮습니다. 언제든지 연락 주세요.</p>
+    <a href="#kakao" class="klg fi">💬 카카오로 상담 시작하기</a>
+    <p class="cnote fi">평균 응답 1시간 이내 · 24시간 문의 가능 · 강요 없음</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <div>
+      <p class="fb">마지막 산책</p>
+      <div class="fin">
+        대표 [이름]<br>
+        사업자등록번호 000-00-00000<br>
+        [전화번호]
+      </div>
+    </div>
+    <div class="flinks">
+      <a href="#kakao">카카오채널</a>
+      <a href="#youtube">유튜브</a>
+      <a href="#blog">네이버 블로그</a>
+      <a href="#place">네이버 플레이스</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <p class="fcopy">&copy; 2026 마지막 산책. All rights reserved.</p>
+    <div class="fterms">
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<a href="#kakao" class="fcta" id="fc">
+  <div class="fdot"></div>
+  💬 카카오 상담
+</a>
+
+<script>
+const nb=document.getElementById('nb'),ham=document.getElementById('ham'),mn=document.getElementById('mn'),fc=document.getElementById('fc');
+ham.addEventListener('click',()=>{const o=mn.classList.toggle('on');ham.classList.toggle('on',o);ham.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기')});
+function cn(){mn.classList.remove('on');ham.classList.remove('on')}
+document.addEventListener('click',e=>{if(!ham.contains(e.target)&&!mn.contains(e.target))cn()});
+window.addEventListener('scroll',()=>{const y=scrollY;nb.classList.toggle('sc',y>10);fc.classList.toggle('show',y>400)},{passive:true});
+const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nl a');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-100)c=s.id});nls.forEach(a=>{const act=a.getAttribute('href')==='#'+c;a.style.color=act?'var(--point)':'';a.style.fontWeight=act?'500':''})},{passive:true});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+function tf(btn){const it=btn.closest('.fitem'),op=it.classList.contains('open');document.querySelectorAll('.fitem').forEach(i=>i.classList.remove('open'));if(!op)it.classList.add('open')}
+</script>
+</body>
+</html>
