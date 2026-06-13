@@ -1,0 +1,410 @@
+<!--
+========================================
+마지막 산책 — 수정 가이드
+========================================
+
+[이미지 교체]
+- 장례지도사 사진: profile-photo.jpg 를 이 폴더에 넣으면 자동 적용
+  (없을 경우 section-care.png 가 대신 표시됩니다)
+
+[링크 교체]
+- 카카오채널: #kakao    → 실제 카카오채널 URL로 교체
+- 유튜브:      #youtube  → 실제 유튜브 채널 URL로 교체
+- 네이버 블로그: #blog   → 실제 블로그 URL로 교체
+- 네이버 플레이스: #place → 실제 플레이스 URL로 교체
+
+[정보 교체]
+- 대표자 이름:  [이름]          검색 후 교체
+- 사업자번호:   [000-00-00000]  검색 후 교체
+- 전화번호:     [전화번호]      검색 후 교체
+
+========================================
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마지막 산책 — 반려동물 장례 서비스</title>
+  <meta name="description" content="반려동물의 마지막 산책을 함께합니다. 추억 인터뷰부터 의전 동행, 펫로스 상담까지.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --main:#2C3E2D;--point:#5C7A4E;--accent:#A8C99A;
+      --bg:#FDFBF8;--bg2:#F0EDE8;--text:#2A2A2A;
+    }
+    body{font-family:'Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,h4{font-family:'Noto Serif KR',serif;font-weight:600}
+
+    /* Fade-in */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .fi.on{opacity:1;transform:translateY(0)}
+    .fi:nth-child(2){transition-delay:.1s}
+    .fi:nth-child(3){transition-delay:.2s}
+    .fi:nth-child(4){transition-delay:.3s}
+
+    section{padding:120px 5%}
+    .inner{max-width:1080px;margin:0 auto}
+
+    .lbl{font-size:.7rem;letter-spacing:.2em;color:var(--point);text-transform:uppercase;font-weight:500;display:block;margin-bottom:16px}
+
+    /* NAV */
+    nav{position:fixed;inset:0 0 auto 0;z-index:200;height:64px;display:flex;align-items:center;padding:0 6%;background:rgba(253,251,248,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(44,62,45,.06);transition:box-shadow .3s}
+    nav.sc{box-shadow:0 2px 20px rgba(44,62,45,.07)}
+    .ni{max-width:1080px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo img{width:32px;height:32px;object-fit:contain}
+    .logo-t{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:600;color:var(--main);letter-spacing:-.02em}
+    .nl{display:flex;align-items:center;gap:28px;list-style:none}
+    .nl a{text-decoration:none;color:var(--text);font-size:.86rem;font-weight:400;transition:color .2s}
+    .nl a:hover{color:var(--point)}
+    .kbtn{background:#FEE500;color:#191919;padding:7px 16px;border-radius:24px;font-weight:500;font-size:.82rem;text-decoration:none;transition:opacity .2s,transform .2s;white-space:nowrap}
+    .kbtn:hover{opacity:.85;transform:translateY(-1px)}
+    .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+    .hbg span{display:block;width:22px;height:2px;background:var(--main);border-radius:2px;transition:all .3s}
+    .hbg.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hbg.on span:nth-child(2){opacity:0}
+    .hbg.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mn{display:none;position:fixed;top:64px;inset-inline:0;background:rgba(253,251,248,.98);backdrop-filter:blur(10px);z-index:199;padding:28px 7%;flex-direction:column;gap:0;border-bottom:1px solid rgba(44,62,45,.08)}
+    .mn.on{display:flex}
+    .mn a{text-decoration:none;color:var(--text);font-size:.96rem;padding:14px 0;border-bottom:1px solid rgba(44,62,45,.07)}
+    .mn .mkbtn{margin-top:20px;background:#FEE500;color:#191919;padding:14px;border-radius:4px;text-align:center;font-weight:500;border-bottom:none}
+
+    /* HERO */
+    #hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:64px;text-align:center;overflow:hidden}
+    .hbg2{position:absolute;inset:0;background:url('./hero-forest-path.png') center/cover no-repeat}
+    .hov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,28,19,.65) 0%,rgba(18,28,19,.5) 100%)}
+    .hbody{position:relative;z-index:2;max-width:720px;padding:0 5%}
+    .hcp{font-size:clamp(1.9rem,5vw,3.4rem);color:#fff;line-height:1.4;margin-bottom:20px;letter-spacing:-.025em}
+    .hbl{color:var(--accent);border-bottom:3px solid var(--accent);padding-bottom:3px}
+    .hsub{font-size:clamp(.88rem,1.6vw,1rem);color:rgba(255,255,255,.78);line-height:2;margin-bottom:48px;font-weight:300}
+    .hbts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .bf{background:var(--accent);color:var(--main);padding:13px 28px;border-radius:2px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .2s;display:inline-block}
+    .bf:hover{background:#b8d9aa;transform:translateY(-2px)}
+    .bg{background:transparent;color:#fff;padding:13px 28px;border-radius:2px;text-decoration:none;font-weight:400;font-size:.9rem;border:1.5px solid rgba(255,255,255,.5);transition:all .2s;display:inline-block}
+    .bg:hover{border-color:#fff;background:rgba(255,255,255,.07)}
+
+    /* INTRO */
+    #intro{background:var(--bg2)}
+    .ig{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+    .iw{border-radius:2px;overflow:hidden;aspect-ratio:4/5}
+    .iw img{width:100%;height:100%;object-fit:cover;display:block}
+    .it h2{font-size:clamp(1.4rem,2.6vw,1.95rem);color:var(--main);line-height:1.5;margin-bottom:24px;letter-spacing:-.025em}
+    .it p{font-size:.91rem;color:#555;line-height:2;margin-bottom:36px}
+    .pills{display:flex;flex-wrap:wrap;gap:8px}
+    .pl{background:rgba(255,255,255,.7);color:var(--point);padding:6px 13px;border-radius:24px;font-size:.76rem;font-weight:500}
+
+    /* SERVICES */
+    #service{background:var(--bg)}
+    .shd{margin-bottom:64px}
+    .shd h2{font-size:clamp(1.4rem,2.6vw,1.95rem);color:var(--main);letter-spacing:-.025em}
+    .sg{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+    .sc2{background:var(--bg2);padding:52px 48px;transition:background .2s;display:flex;flex-direction:column}
+    .sc2:hover{background:#e8e3dd}
+    .sn{font-size:.68rem;color:var(--accent);letter-spacing:.14em;font-weight:500;margin-bottom:24px;display:block}
+    .sc2 h3{font-size:1.3rem;color:var(--main);margin-bottom:10px;letter-spacing:-.02em}
+    .sp{font-size:1.5rem;color:var(--point);font-weight:600;font-family:'Noto Serif KR',serif;letter-spacing:-.02em;margin-bottom:6px}
+    .snote{font-size:.73rem;color:#aaa;margin-bottom:20px}
+    .sfoot{margin-top:auto;padding-top:20px;border-top:1px solid rgba(44,62,45,.08)}
+    .sa{font-size:.8rem;color:var(--point);text-decoration:none;font-weight:500}
+    .sa:hover{text-decoration:underline}
+
+    /* PROCESS */
+    #process{background:var(--main);position:relative;overflow:hidden}
+    .psi{position:absolute;right:0;top:0;bottom:0;width:40%;background:url('./section-memories.png') center/cover no-repeat;opacity:.1;pointer-events:none}
+    .pb{position:relative;z-index:2}
+    .phd{margin-bottom:64px}
+    .phd h2{font-size:clamp(1.4rem,2.6vw,1.95rem);color:#fff;letter-spacing:-.025em}
+    .phd .lbl{color:var(--accent)}
+    .tl{position:relative;max-width:520px}
+    .tl::before{content:'';position:absolute;left:18px;top:20px;bottom:20px;width:1px;background:rgba(168,201,154,.15)}
+    .ti{display:flex;gap:28px;margin-bottom:48px;align-items:flex-start}
+    .ti:last-child{margin-bottom:0}
+    .td{width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(168,201,154,.08);border:1px solid rgba(168,201,154,.4);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--accent);font-weight:500;position:relative;z-index:1;margin-top:1px}
+    .tt h4{font-size:.95rem;color:#fff;margin-bottom:5px;letter-spacing:-.02em}
+    .tt p{font-size:.82rem;color:rgba(255,255,255,.45);font-style:italic;margin-top:6px}
+    .tt p.ac{color:var(--accent);font-style:normal;font-weight:500;background:rgba(168,201,154,.08);border-left:2px solid var(--accent);padding:8px 12px;margin-top:8px}
+
+    /* REVIEWS */
+    #review{background:var(--bg2)}
+    .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+    .rc{background:#fff;padding:40px 32px}
+    .re{font-size:1.8rem;margin-bottom:20px;line-height:1}
+    .rn{font-size:.95rem;color:var(--main);margin-bottom:4px;letter-spacing:-.02em;font-weight:600}
+    .ra{font-size:.78rem;color:#aaa;margin-bottom:18px}
+    .rb{font-size:.86rem;color:#5a5a5a;line-height:1.9;margin-bottom:18px}
+    .rf{font-size:.76rem;color:#bbb}
+
+    /* CTA */
+    #cta{background:var(--bg);text-align:center;padding:140px 5%}
+    #cta h2{font-size:clamp(1.5rem,3.2vw,2.3rem);color:var(--main);line-height:1.5;margin-bottom:14px;letter-spacing:-.025em}
+    .cbl{color:var(--point);border-bottom:2.5px solid var(--accent);padding-bottom:3px}
+    #cta .csub{font-size:.9rem;color:#888;margin-bottom:48px}
+    .klg{background:#FEE500;color:#191919;padding:16px 44px;border-radius:2px;text-decoration:none;font-weight:500;font-size:.96rem;display:inline-block;transition:all .2s}
+    .klg:hover{background:#fdd800;transform:translateY(-2px);box-shadow:0 10px 28px rgba(254,229,0,.28)}
+    .cinfo{margin-top:18px;font-size:.76rem;color:#bbb;letter-spacing:.02em}
+
+    /* FOOTER */
+    footer{background:#1a2218;padding:64px 6% 40px}
+    .ftop{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .fb{font-family:'Noto Serif KR',serif;font-size:1rem;color:rgba(255,255,255,.82);font-weight:600;margin-bottom:10px}
+    .fin{font-size:.76rem;color:rgba(255,255,255,.38);line-height:2}
+    .fl{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+    .fl a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.8rem;transition:color .2s}
+    .fl a:hover{color:var(--accent)}
+    .fbot{max-width:1080px;margin:0 auto;padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .fcopy{font-size:.72rem;color:rgba(255,255,255,.25)}
+    .fterms{display:flex;gap:16px}
+    .fterms a{font-size:.72rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+    .fterms a:hover{color:rgba(255,255,255,.6)}
+
+    /* RESPONSIVE */
+    @media(max-width:860px){
+      .nl,.kbtn{display:none}
+      .hbg{display:flex}
+      section{padding:88px 6%}
+      .ig{grid-template-columns:1fr;gap:40px}
+      .iw{aspect-ratio:16/9}
+      .sg{grid-template-columns:1fr}
+      .rg{grid-template-columns:1fr}
+      .psi{width:100%;opacity:.06}
+      .fbot{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:480px){
+      .hbts{flex-direction:column;align-items:center}
+      #cta{padding:100px 6%}
+      .ftop{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nb">
+  <div class="ni">
+    <a href="#hero" class="logo">
+      <img src="./logo-symbol.png" alt="마지막 산책">
+      <span class="logo-t">마지막 산책</span>
+    </a>
+    <ul class="nl">
+      <li><a href="#intro">소개</a></li>
+      <li><a href="#service">서비스</a></li>
+      <li><a href="#process">절차</a></li>
+      <li><a href="#review">후기</a></li>
+      <li><a href="#kakao" class="kbtn">💬 카카오 상담</a></li>
+    </ul>
+    <button class="hbg" id="ham" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mn" id="mn">
+  <a href="#intro"   onclick="cn()">소개</a>
+  <a href="#service" onclick="cn()">서비스</a>
+  <a href="#process" onclick="cn()">절차</a>
+  <a href="#review"  onclick="cn()">후기</a>
+  <a href="#kakao" class="mkbtn" onclick="cn()">💬 카카오로 상담하기</a>
+</div>
+
+<section id="hero">
+  <div class="hbg2"></div>
+  <div class="hov"></div>
+  <div class="hbody">
+    <h1 class="hcp fi"><span class="hbl">______</span>의 마지막 산책을<br>함께하겠습니다.</h1>
+    <p class="hsub fi">함께 걷던 그 길, 좋아하던 그 냄새, 뛰어다니던 그 공원.<br>그 모든 기억을 담아, 마지막 길을 준비해드립니다.</p>
+    <div class="hbts fi">
+      <a href="#kakao" class="bf">📞 지금 무료 상담하기</a>
+      <a href="#service" class="bg">서비스 알아보기</a>
+    </div>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="inner">
+    <div class="ig">
+      <div class="iw fi">
+        <!-- 장례지도사 본인 사진: profile-photo.jpg 를 이 폴더에 넣으면 자동 적용 -->
+        <img src="./profile-photo.jpg"
+             alt="장례지도사 소개"
+             onerror="this.src='./section-care.png'">
+      </div>
+      <div class="it fi">
+        <span class="lbl">장례지도사 소개</span>
+        <h2>처음 겪는 이별,<br>혼자 준비하지 않도록</h2>
+        <p>저는 시설을 운영하지 않습니다. 대신 보호자님 곁에 직접 찾아가, ○○가 좋아하던 그 장소, 그 기억을 함께 떠올리며 마지막 산책을 준비해드립니다. 강요 없이, 급하지 않게, 진심으로.</p>
+        <div class="pills">
+          <span class="pl">반려동물 장례지도사</span>
+          <span class="pl">합법 장묘시설 연계</span>
+          <span class="pl">유튜브 채널 운영</span>
+          <span class="pl">펫로스 상담</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="service">
+  <div class="inner">
+    <div class="shd fi">
+      <span class="lbl">서비스</span>
+      <h2>○○를 위해 무엇을 해드릴 수 있을까요</h2>
+    </div>
+    <div class="sg">
+      <div class="sc2 fi">
+        <span class="sn">01</span>
+        <h3>추억 인터뷰 상담</h3>
+        <p class="sp">무료</p>
+        <p class="snote">무료 상담 후 결정</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+      <div class="sc2 fi">
+        <span class="sn">02</span>
+        <h3>화장 예약 대행</h3>
+        <p class="sp">5만원~</p>
+        <p class="snote">무료 상담 후 결정</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+      <div class="sc2 fi">
+        <span class="sn">03</span>
+        <h3>의전 동행</h3>
+        <p class="sp">15만원~</p>
+        <p class="snote">무료 상담 후 결정</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+      <div class="sc2 fi">
+        <span class="sn">04</span>
+        <h3>펫로스 사후 상담</h3>
+        <p class="sp">무료 1회</p>
+        <p class="snote">무료 상담 후 결정</p>
+        <div class="sfoot"><a href="#kakao" class="sa">상담하기 →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="psi"></div>
+  <div class="inner pb">
+    <div class="phd fi">
+      <span class="lbl">절차</span>
+      <h2>함께 걷는 여섯 걸음</h2>
+    </div>
+    <div class="tl">
+      <div class="ti fi">
+        <div class="td">01</div>
+        <div class="tt">
+          <h4>기억 나누기</h4>
+          <p>"○○가 제일 좋아하던 산책 장소가 어디였나요?"</p>
+        </div>
+      </div>
+      <div class="ti fi">
+        <div class="td">02</div>
+        <div class="tt"><h4>준비</h4></div>
+      </div>
+      <div class="ti fi">
+        <div class="td">03</div>
+        <div class="tt"><h4>예약 확정</h4></div>
+      </div>
+      <div class="ti fi">
+        <div class="td">04</div>
+        <div class="tt"><h4>의전 동행</h4></div>
+      </div>
+      <div class="ti fi">
+        <div class="td">05</div>
+        <div class="tt"><h4>추모</h4></div>
+      </div>
+      <div class="ti fi">
+        <div class="td">06</div>
+        <div class="tt">
+          <h4>사후 케어</h4>
+          <p class="ac">"경쟁사 어디도 여기까지 함께하지 않습니다."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="review">
+  <div class="inner">
+    <div class="fi">
+      <span class="lbl">이야기들</span>
+      <h2 style="font-size:clamp(1.4rem,2.6vw,1.95rem);color:var(--main);letter-spacing:-.025em">함께한 마지막 산책</h2>
+    </div>
+    <div class="rg">
+      <div class="rc fi">
+        <div class="re">🐕</div>
+        <p class="rn">골든리트리버 · 코코 · 13세</p>
+        <p class="ra">서울 · 보호자 김○○님</p>
+        <p class="rb">코코가 제일 좋아하던 한강변 산책길 사진을 미리 가져오라고 하셨어요. 그 사진을 보면서 마지막을 준비하는데, 눈물이 났지만 마음이 편했어요.</p>
+      </div>
+      <div class="rc fi">
+        <div class="re">🐈</div>
+        <p class="rn">페르시안 고양이 · 루나 · 15세</p>
+        <p class="ra">경기 · 보호자 이○○님</p>
+        <p class="rb">처음이라 아무것도 몰랐는데 처음부터 끝까지 다 알려주셨어요. 강요하는 게 하나도 없고, 루나를 진심으로 대해주셔서 감사했습니다.</p>
+      </div>
+      <div class="rc fi">
+        <div class="re">🐕</div>
+        <p class="rn">말티즈 · 몽이 · 16세</p>
+        <p class="ra">인천 · 보호자 박○○님</p>
+        <p class="rb">장례 후에도 연락 주셔서 놀랐어요. 한 달 지나도 힘들었는데 그 전화 한 통이 얼마나 위로가 됐는지 몰라요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="inner">
+    <h2 class="fi"><span class="cbl">______</span>의 마지막 산책,<br>지금 이름을 불러주세요.</h2>
+    <p class="csub fi">상담은 무료입니다. 언제든지 연락 주세요.</p>
+    <a href="#kakao" class="klg fi">💬 카카오로 상담 시작하기</a>
+    <p class="cinfo fi">평균 응답시간 1시간 이내 · 24시간 문의 가능</p>
+  </div>
+</section>
+
+<footer>
+  <div class="ftop">
+    <div>
+      <p class="fb">마지막 산책</p>
+      <div class="fin">
+        <!-- 대표자 이름: [이름] 을 실제 이름으로 교체 -->
+        대표 [이름]<br>
+        <!-- 사업자번호: [000-00-00000] 을 실제 번호로 교체 -->
+        사업자등록번호 000-00-00000<br>
+        <!-- 전화번호: [전화번호] 를 실제 번호로 교체 -->
+        [전화번호]
+      </div>
+    </div>
+    <div class="fl">
+      <a href="#kakao">카카오채널</a>
+      <a href="#youtube">유튜브</a>
+      <a href="#blog">네이버 블로그</a>
+      <a href="#place">네이버 플레이스</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <p class="fcopy">© 2026 마지막 산책. All rights reserved.</p>
+    <div class="fterms">
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ham=document.getElementById('ham'),mn=document.getElementById('mn'),nb=document.getElementById('nb');
+ham.addEventListener('click',()=>{const o=mn.classList.toggle('on');ham.classList.toggle('on',o)});
+function cn(){mn.classList.remove('on');ham.classList.remove('on')}
+document.addEventListener('click',e=>{if(!ham.contains(e.target)&&!mn.contains(e.target))cn()});
+window.addEventListener('scroll',()=>{nb.classList.toggle('sc',scrollY>10)},{passive:true});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nl a');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-90)c=s.id});nls.forEach(a=>{const act=a.getAttribute('href')==='#'+c;a.style.color=act?'var(--point)':'';a.style.fontWeight=act?'500':''})},{passive:true});
+</script>
+</body>
+</html>
